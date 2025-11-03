@@ -27,12 +27,30 @@ Key characteristics:
         Goal can be with constraints
         Goal are stores in the core memory
         Goals can be altered
-    - planning: agent's ability to break down a high level goal into a structured sequence if actions, decide the best path
+    - Planning: agent's ability to break down a high level goal into a structured sequence if actions, decide the best path
         planning is iterative, it can revisit a step if the next step is not feasible.
         3 steps:
             - Generating multiple plans
             - Evaluating wach plan on efficiency, tool availability, cost, risk, etc
             - seelect the best plan with HIL or a pre-programmed policy
-    - reasoning: A cognitive process through which an AgenticAI interprets info, draws conclusions and make decisions, both while planning ahead and executing. 
-    - adaptibility
-    - context aware
+    - Reasoning: A cognitive process through which an AgenticAI interprets info, draws conclusions and make decisions, both while planning ahead and executing. 
+        Reasoning during planning and execution
+    - Adaptibility: Agent's ability to modify its plans, stratergies or actions in response to unexpected condiotions, all while staying aligned with the goal
+        failures, external feedback, change in goals
+    - Context Aware: ability to understand, retain and utilize relevant info from the ongoing task, past interactions, user preferances and environmental cues to make better decisions throughout a multi-step process.
+        Types of context:
+            - original goal
+            - progress till now + interaction history
+            - environment state
+            - tool responses
+            - user specific preferences
+            - policy/guardrails
+        Context awareness is maintained through memory
+        short and long term memory
+
+Components:
+    - Brain: generally LLM, goal interpretation, planing, reasoning, tool selection, communication with Human
+    - Orchestrator: executes the plan, task sequencing, conditional routing, retry logic, looping&iteration, delegation
+    - Tools: external actions, KB access
+    - Memory: STM, LTM, state tracking
+    - Supervisor: Aproval requests (HIL), guardrails enforcement, edge-case escalation. 
