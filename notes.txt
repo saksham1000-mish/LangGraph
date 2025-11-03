@@ -1,0 +1,38 @@
+GenAI vs AgenticAI:
+    - GenAI focuses on creating content, AgenticAI is about solving a goal
+    - GenAI is reactive (human needed), AgenticAI is proactive (very minimal HIL)
+    - GenAI is a building block of AgenticAIddd
+
+AgenticAI:
+    - Type of AI that can take up a task or goal from a user and then work toward completing it on its own, with minimal human guidance. 
+    - It plans, takes action, adapts to changes and seeks help only when necessary.
+
+Example: HR recruiter wants to hire backend engineer
+    - AI understands the goal
+    - proposes a plan to do solving
+    - Drafts a JD on its own and asks human for review
+    - and then automatically posts the job on platforms
+    - monitors the job applications
+    - lets say less applications, then automatically suggests HR for further steps like post boosting, ads, etc
+    - after applications, then parses resume, and finds strong candidates
+    - then checks the calendar for availability and schedules automatically the intrview
+    - on day of intrview reminds HR about it, and mails a list of interview questions for the role
+    - after successul rounds, it drafts an offer letter, asks HR for review and sends to the candidate
+ 
+Key characteristics:
+    - Autonomous: make decisions and tak actions on its own without HIL.
+        Autonomy can be controlled with permission scope, HIL, Override controls, guardrails
+        Autonomy is dangerous, it may hallucinate and give wrong info
+    - Goal- Oriented: AI system operates with a persistent objective in mind and continuously direct its action to acheieve its objective.
+        Goal can be with constraints
+        Goal are stores in the core memory
+        Goals can be altered
+    - planning: agent's ability to break down a high level goal into a structured sequence if actions, decide the best path
+        planning is iterative, it can revisit a step if the next step is not feasible.
+        3 steps:
+            - Generating multiple plans
+            - Evaluating wach plan on efficiency, tool availability, cost, risk, etc
+            - seelect the best plan with HIL or a pre-programmed policy
+    - reasoning: A cognitive process through which an AgenticAI interprets info, draws conclusions and make decisions, both while planning ahead and executing. 
+    - adaptibility
+    - context aware
