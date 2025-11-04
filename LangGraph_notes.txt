@@ -1,0 +1,18 @@
+LangChain vs LangGraph
+
+In langchain challenges:
+    - control flow complexity: hard to handle conditional branch, loops, time jumps (wait for 48 hrs). Too mush glue code (write loops, conditional code on its own) which is hard to maintain
+    - State handling: LangChain is stateless. Maintaing the state(datapoints) in the whole workflow is very difficult. State exixts in key-value pair, but langchain has no mech for tracking key-value pair. We need to handle the dict on our own and manually change the state. 
+    - Event-driven execution: here the whole chain exectues sequentially without stopping and only stops at ends. It has no capability to lets say wait for a trigger to happen and then perform the next step. 
+    - Fault-Tolerance: very imp for long running workflows. Langchain cant recover after a fault. It doesnt resume after a fault
+    - Human in Loop: There may be cases where we need approval or review by the human. here it is a workflow, because there is no inbuilt func to stop, we can divide the chain in 2 chains. Too difficult to maintain
+    - Nested workflows: Very difficult to create nested workflows
+    - Observability: difficult to monitor, debug and understand what your workflow is doing at runtime. But we can use LangSmith to do the same, but it only ,monitors LangChain not your gluecode. 
+
+- In LangGraph we draw nodes and edges, where we can control the workflow. There is low to no glue-code.
+- LangGraph is stateful, here we create a State object (dict or Pydantic) and the State is mutable. We can change the  all the datapoints there. Easy to pass info
+-  In LangGraph has inherently feature for event-driven execution because the state is easily storable
+- Has built in fault-tolerance. Retry logic is available which means it can retry a step after some time. For big faults (whole server is down), there is a recovery concept, we can resume from where the execution got paused as their are checkpointers. It is stateful
+- HIL capability is inbuilt, and very easy to use, we can track the state and whenever we need approval we pause the process and after approval we continue.
+- Each sub graph is also a graph in iself and very easy to connect different workflows. State communication between subgraphs is also possible. Can create multi-agent systems. We can also re-use graphs
+- LangGraph and LangSmith has a very tight intergration, and we can monitor each and every small step. A whole chronological logs are maintained.  

@@ -53,4 +53,6 @@ Components:
     - Orchestrator: executes the plan, task sequencing, conditional routing, retry logic, looping&iteration, delegation
     - Tools: external actions, KB access
     - Memory: STM, LTM, state tracking
-    - Supervisor: Aproval requests (HIL), guardrails enforcement, edge-case escalation. 
+    - Supervisor: Aproval requests (HIL), guardrails enforcement, edge-case escalation.
+
+ 
