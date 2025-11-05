@@ -1,0 +1,43 @@
+Common workflows:
+    - Prompt Chaining: call LLM in series, where output of one is input of next in a chain O => O => O
+    - Routing: Route a task to the correct LLM
+    - Parallelization: We breakdown a task into multiple sub-tasks and first complete them to complete the whole workflow
+    - Orchestrator Workers: a task is divided into multiple sub-tasks, but we dont know the nature of the subtasks unkike in parallel. Orchestrator assigns the work to the worker LLMs
+    - Evaluator Optimizer:  task which is difficult to execute in one go, a review is required, multiple iterations are required. 2 llms: generator llm and evaluation llm. Loop goes until evaluator is satisfied. 
+
+Graphs, Nodes & Edges:
+    - Node represents a task, it is essentially a python function
+    - Edges tells us when to exectue the task (sequential, parallel, loops)
+
+State:
+    - state is the shared memory that flows through the workflow, it holds all the data being passed between nodes as the graph runs. A special dictionary (TypedDictionary)
+    - accessible by all nodes
+    - each node can change the state (mutable)
+    - but sometime this can cause issues, if we rewrite the info on a KEY, then the past info is lost
+
+Reducers:
+    - they define how updates from nodes are applied to the shared state.
+    - Each key in the state has its own reducer, which determines whether new data replaces / merges / adds to the existing value. 
+
+LangGraph Execution Model:
+    - Graph defination:
+        - state schema
+        - nodes
+        - Edges
+    
+    - Compilation:
+        - checks the graph structure and prepares it for Execution
+    
+    - Invocation:
+        - LangGraph sends the initial state as a message to the entry node
+
+    - Super-steps begin:
+        - Execution proceeds in rounds
+        - Each returns an update to the state
+    
+    - Message Passing & Node Activation:
+        - Messages are passed to downstream nodes via Edges
+        - Nodes that receive messages become active for the next rounds
+    
+    - Halting Condition:
+        - Execution stops when no nodes are active and no messages in transit. 
