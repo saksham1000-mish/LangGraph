@@ -41,3 +41,14 @@ LangGraph Execution Model:
     
     - Halting Condition:
         - Execution stops when no nodes are active and no messages in transit. 
+
+Persistence: ability to save and restore the state of a workflow over time
+    - persistence doesnt only store the final value of the state, it also stores all the intermediate values.
+    - checkpointers: divdes the graph into checkpoints, and we can restart from there
+    - threads: everyworkflow is assigned a thread_id, so that we can recover a particular workflow (like PRIMARY KEY)
+
+    benefits:
+        - short-term memory
+        - falut tolerance
+        - HIL
+        - Time Travel
